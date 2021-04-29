@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Past Prediction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+    .container-fluid{
+      background-color: #8FDDE7;
+    }
+    .well{
+      background-color: #28282B;
+    }
+    .row.content {
+      height: 685px
+
+    }
+    .sidenav {
+      background-color: #28282B;
+      height: 100%;
+    }
+        
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <h2>Rainfall Prediction</h2>
+    </div>
+    <br>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="home">Home</a></li>
+        <li class="active"><a href="#">Past Prediction</a></li>
+        <li><a href="future">Future Prediction</a></li>
+        <li><a href="about">About Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+      <h2 style="color:#8FDDE7;">Rainfall Prediction</h2>
+      <br><br>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="home">Home</a></li>
+        <li class="active"><a href="#section1">Past Prediction</a></li>
+        <li><a href="future">Future Prediction</a></li>
+        <li><a href="about">About Us</a></li>
+      </ul><br>
+    </div>
+    <div class="col-sm-9">
+      <div class="well">
+        <h1 style="text-align: center; color: white;">Past Prediction</h1>
+      </div>
+    </div>
+
+    <div style="text-align: center;">
+   <input class="recbtn" data-toggle="modal" data-target="#myModal" type="submit" value="Select SubDivision" >  
+    </div>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><span style="font-size: 22px;" class="fas fa-sliders-h"></span>&nbsp;&nbsp;Select Subdivision</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <form method="POST" action = "{{ url_for('past') }}">
+            {{ formp.hidden_tag() }}
+            <fieldset class="form-group">
+              <div class="form-group">
+                {{ formp.subdp.label(class="form-control-label") }}
+                {% if formp.subdp.errors %}
+                  {{ formp.subdp(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in formp.subdp.errors %}
+                      <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  {{ formp.subdp(class="form-control form-control-lg") }}
+                {% endif %}
+              </div>
+            </fieldset>
+            <div class="form-group">
+              {{ formp.submit(class="btn btn-outline-info") }}
+            </div>
+          </form>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div> 
+
+  </div>
+</div><br>
+
+    <div class="col-sm-9">
+      <div class="well">
+        <img src="static/past.jpg">
+      </div>
+    </div>
+
+</body>
+</html>

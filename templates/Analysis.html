@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Analysis</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    
+
+    .container-fluid{
+      background-color: #8FDDE7;
+    }
+
+    .well{
+      background-color: #28282B;
+    }
+
+  th, td {
+  padding-right: 25px; 
+  color: white;
+  }
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: #28282B;
+    }
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="home">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="past">Past Prediction</a></li>
+      </ul>
+    </div>
+</nav>
+      <div class="col-sm-12">
+      <div class="well">
+        <h2 style="color: white; text-align: center;">ANALYSIS</h2>
+      </div>
+      </div>
+<div class="container-fluid"><br><br>
+
+  <div class="col-sm-12">
+    <div class="well">
+    <h3 style="color: white; text-align: center;">Actual Rainfall Data</h3>
+        <center>
+          <table>
+            <tr>
+                <th><h5>SubDivision</h5></th>
+                <th><h5>Year</h5></th>
+                <th><h5>JAN</h5></th>
+                <th><h5>FEB</h5></th>
+                <th><h5>MAR</h5></th>
+                <th><h5>APR</h5></th>
+                <th><h5>MAY</h5></th>
+                <th><h5>JUNE</h5></th>
+                <th><h5>JULY</h5></th>
+                <th><h5>AUG</h5></th>
+                <th><h5>SEP</h5></th>
+                <th><h5>OCT</h5></th>
+                <th><h5>NOV</h5></th>
+                <th><h5>DEC</h5></th>
+            </tr>
+            {% for i in range(fsp.shape[0]) %}
+                <tr>
+                    <td><h6>{{ fsp.iloc[i][0] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][1] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][2] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][3] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][4] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][5] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][6] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][7] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][8] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][9] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][10] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][11] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][12] }}</h6></td>
+                    <td><h6>{{ fsp.iloc[i][13] }}</h6></td>
+                </tr>
+            {% endfor %}
+        </table>
+        </center>
+      </div>
+    </div>
+
+  <div class="col-sm-12">
+  <div class="well">
+    <h3 style="color: white;text-align:center;">Predicted Rainfall Data</h3>
+        <center>
+<table>
+            <tr>
+                <th><h5>JAN</h5></th>
+                <th><h5>FEB</h5></th>
+                <th><h5>MAR</h5></th>
+                <th><h5>APR</h5></th>
+                <th><h5>MAY</h5></th>
+                <th><h5>JUNE</h5></th>
+                <th><h5>JULY</h5></th>
+                <th><h5>AUG</h5></th>
+                <th><h5>SEP</h5></th>
+                <th><h5>OCT</h5></th>
+                <th><h5>NOV</h5></th>
+                <th><h5>DEC</h5></th>
+            </tr>
+            {% for i in range(d_tbl.shape[0]) %}
+                <tr>
+                    <td><h6>{{ d_tbl.iloc[i][0] }}</h6></td>
+                    <td><h6>{{ d_tbl.iloc[i][1] }}</h6></td>
+                    <td><h6>{{ d_tbl.iloc[i][2] }}</h6></td>
+                    <td><h6>{{ d_tbl.iloc[i][3] }}</h6></td>
+                    <td><h6>{{ d_tbl.iloc[i][4] }}</h6></td>
+                    <td><h6>{{ d_tbl.iloc[i][5] }}</h6></td>
+                    <td><h6>{{ d_tbl.iloc[i][6] }}</h6></td>
+                    <td><h6>{{ d_tbl.iloc[i][7] }}</h6></td>
+                    <td><h6>{{ d_tbl.iloc[i][8] }}</h6></td>
+                    <td><h6>{{ d_tbl.iloc[i][9] }}</h6></td>
+                    <td><h6>{{ d_tbl.iloc[i][10] }}</h6></td>
+                    <td><h6>{{ d_tbl.iloc[i][11] }}</h6></td>
+                </tr>
+            {% endfor %}
+        </table>
+        </center>
+      </div>
+    </div> 
+
+      <div class="col-sm-12"><br><br>
+      <div class="well">
+        <h2 style="color: white; text-align: center;">PLOTS</h2>
+      </div>
+      </div><br>    
+
+    <div class="col-sm-6">
+      <div class="well">
+        <img src="static/pbar.png">
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="well">
+        <img src="static/ppbar.png">
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="well">
+        <img src="static/pline.png">
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="well">
+        <img src="static/ppline.png">
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="well">
+        <img src="static/combined_line.png">
+      </div>
+    </div>
+
+
+  </div>
+</body>
+</html>
